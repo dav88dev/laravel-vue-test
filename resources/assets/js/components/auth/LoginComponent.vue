@@ -30,7 +30,7 @@
         methods: {
             submitLogin() {
                 this.loginError = false;
-                axios.post('/api/auth/login', {
+                axios.post('/api/v1/auth/login', {
                     email: this.email,
                     password: this.password
                 }).then(response => {

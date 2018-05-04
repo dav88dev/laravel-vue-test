@@ -30,7 +30,7 @@
             }
         },
         mounted() {
-            axios.get('/api/dashboard', {
+            /*axios.get('/api/v1/dashboard', {
                 headers: {
                     Authorization: 'Bearer ' + localStorage.getItem('token')
                 }
@@ -39,7 +39,7 @@
                     this.data = response.data.data
                 }).catch(error => {
 
-            })
+            })*/
         }
     }
 </script>

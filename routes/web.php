@@ -11,10 +11,8 @@
 |
 */
 
-
-
 Route::get('{any?}', function () {
     return view('app');
-});
+})->name('login');
 
 
