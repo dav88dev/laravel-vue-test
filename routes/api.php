@@ -20,25 +20,24 @@ Route::group([
     'middleware' => 'api',
     'prefix' => 'v1/auth'
 ], function () {
-    Route::post('login', 'AuthController@login')->name('api_login');
-    Route::post('logout', 'AuthController@logout')->name('api_logout');;
-    Route::post('refresh', 'AuthController@refresh')->name('refresh_token');;
-    Route::post('me', 'AuthController@me')->name('auth_user');
+    Route::post('/login', 'AuthController@login')->name('api_login');
+    Route::post('/logout', 'AuthController@logout')->name('logout');
+    Route::post('/refresh', 'AuthController@refresh')->name('refresh_token');;
+    Route::post('/me', 'AuthController@me')->name('auth_user');
 });
 
 Route::group(['prefix' => 'v1'], function () {
-    Route::resource('teams', 'TeamController')->except([
+
+    Route::resource('teams', 'TeamController')->middleware('auth:api')->except([
+        'create',
+        'edit'
+    ])->middleware('auth:api');
+
+    Route::resource('players', 'PlayerController')->middleware('auth:api')->except([
         'create',
         'edit'
     ]);
-
-    Route::resource('players', 'PlayerController')->except([
-        'create',
-        'edit'
-    ]);
-
 
     Route::get('/teams/{team}/players',
         ['uses' => 'TeamController@getPlayers'])->middleware('auth:api')->name('teams.players');
-
 });

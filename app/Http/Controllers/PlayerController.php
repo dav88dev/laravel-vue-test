@@ -8,14 +8,15 @@ use Validator;
 
 class PlayerController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
-     * @return object
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
-        return Player::all(['team_id', 'name']);
+        return response()->json(Player::paginate(), 200);
     }
 
     /**
