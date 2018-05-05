@@ -1,5 +1,8 @@
 <template>
     <div class="row">
+        <div class="col-4 adding-button">
+            <button type="button" class="btn btn-primary">Add team</button>
+        </div>
         <div class="card-deck">
             <div v-for="team in teams" class="card">
                 <img class="card-img-top" src="https://lorempixel.com/300/150/" alt="Card image cap">
@@ -39,6 +42,9 @@
     }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
+    .adding-button{
+        margin: 10px;
+    }
 
 </style>

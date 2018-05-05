@@ -16,7 +16,7 @@ class PlayerController extends Controller
      */
     public function index()
     {
-        return response()->json(Player::paginate(), 200);
+        return response()->json(Player::paginate(9), 200);
     }
 
     /**
