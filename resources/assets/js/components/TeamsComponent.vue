@@ -1,7 +1,7 @@
 <template>
     <div class="row">
         <div class="col-4 adding-button">
-            <button type="button" class="btn btn-primary">Add team</button>
+            <button @click="changePage('add-team')" type="button" class="btn btn-primary">Add team</button>
         </div>
         <div class="card-deck">
             <div v-for="team in teams" class="card">
@@ -11,12 +11,12 @@
                     <p class="card-text">Click to see players</p>
                 </div>
             </div>
-
         </div>
     </div>
 </template>
 
 <script>
+    import {pageChanger} from '../mixins/page-changer'
     export default {
         name: "teams-component",
         data(){
@@ -28,7 +28,7 @@
         mounted() {
             axios.get('/api/v1/teams', {
                 headers: {
-                    Authorization: 'Bearer ' + localStorage.getItem('token'),
+                    Authorization: 'bearer' + localStorage.getItem('token'),
                     responseType: 'json'
                 }
             })
@@ -38,7 +38,10 @@
 
             })
 
-        }
+        },
+        mixins: [
+            pageChanger
+        ],
     }
 </script>
 

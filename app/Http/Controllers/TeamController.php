@@ -10,6 +10,13 @@ class TeamController extends Controller
 {
 
     /**
+     * TeamController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('jwt.auth');
+    }
+    /**
      * Display a listing of the resource.
      *
      * @return object

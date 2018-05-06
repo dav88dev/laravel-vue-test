@@ -4,6 +4,7 @@ import LoginComponent from './components/auth/LoginComponent'
 import LogoutComponent from './components/auth/LogoutComponent'
 import TeamsComponent from './components/TeamsComponent'
 import PlayersComponent from './components/PlayersComponent'
+import AddTeam from './components/AddTeam'
 
 
 export const routes = [
@@ -28,7 +29,22 @@ export const routes = [
                 path: '/dashboard/players',
                 name: 'players',
                 component: PlayersComponent
-            }
+            },
+            {
+                path: '/dashboard/teams/:team/players',
+                name: 'team-players',
+                //component: PlayersComponent
+            },
+            {
+                path: '/dashboard/teams/add',
+                name: 'add-team',
+                component: AddTeam
+            },
+            {
+                path: '/dashboard/players/add',
+                name: 'add-player',
+                //component: PlayersComponent
+            },
         ]
     },
     {

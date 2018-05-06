@@ -2,7 +2,7 @@
     <transition name="animated">
         <div v-if="fetchComplete">
             <div class="col-4 adding-button">
-                <button type="button" class="btn btn-primary">Add player</button>
+                <button @click="changePage('add-player')" type="button" class="btn btn-primary">Add player</button>
             </div>
             <div class="row">
                 <div class="card-columns">
@@ -44,6 +44,7 @@
     </transition>
 </template>
 <script>
+    import {pageChanger} from '../mixins/page-changer'
     export default {
         name: "players-component",
         data() {
@@ -86,7 +87,10 @@
                     }).catch(error => {
                 })
             },
-        }
+        },
+        mixins: [
+            pageChanger
+        ],
     }
 </script>
 

@@ -10,6 +10,14 @@ class PlayerController extends Controller
 {
 
     /**
+     * PlayerController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('jwt.auth');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\JsonResponse

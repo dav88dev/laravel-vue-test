@@ -28,16 +28,16 @@ Route::group([
 
 Route::group(['prefix' => 'v1'], function () {
 
-    Route::resource('teams', 'TeamController')->middleware('auth:api')->except([
+    Route::resource('teams', 'TeamController')->except([
         'create',
         'edit'
-    ])->middleware('auth:api');
+    ]);
 
-    Route::resource('players', 'PlayerController')->middleware('auth:api')->except([
+    Route::resource('players', 'PlayerController')->except([
         'create',
         'edit'
     ]);
 
     Route::get('/teams/{team}/players',
-        ['uses' => 'TeamController@getPlayers'])->middleware('auth:api')->name('teams.players');
+        ['uses' => 'TeamController@getPlayers'])->name('teams.players');
 });
