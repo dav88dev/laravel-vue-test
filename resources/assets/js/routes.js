@@ -5,6 +5,7 @@ import LogoutComponent from './components/auth/LogoutComponent'
 import TeamsComponent from './components/TeamsComponent'
 import PlayersComponent from './components/PlayersComponent'
 import AddTeam from './components/AddTeam'
+import AddPlayer from './components/AddPlayer'
 
 
 export const routes = [
@@ -43,7 +44,7 @@ export const routes = [
             {
                 path: '/dashboard/players/add',
                 name: 'add-player',
-                //component: PlayersComponent
+                component: AddPlayer
             },
         ]
     },

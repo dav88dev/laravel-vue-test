@@ -30,16 +30,15 @@
 
         methods: {
             save() {
-                this.success = true;
                 axios.post('/api/v1/teams', {
-                    headers: {
-                        Authorization: 'Bearer ' + localStorage.getItem('token'),
-                        type:'JWT',
-                    },
-                    name:this.teamName,
+                        headers: {
+                            Authorization: 'Bearer ' + localStorage.getItem('token'),
+                        },
+                        name: this.teamName,
                     }
                 )
                     .then(response => {
+                        this.success = true;
                         setTimeout(() => {
                             return this.$router.push({name: 'teams'})
                         }, 500);

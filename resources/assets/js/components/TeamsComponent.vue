@@ -3,7 +3,7 @@
         <div class="col-4 adding-button">
             <button @click="changePage('add-team')" type="button" class="btn btn-primary">Add team</button>
         </div>
-        <div class="card-deck">
+        <div v-if="callComplete" class="card-deck">
             <div v-for="team in teams" class="card">
                 <img class="card-img-top" src="https://lorempixel.com/300/150/" alt="Card image cap">
                 <div class="card-body">
@@ -17,36 +17,29 @@
 
 <script>
     import {pageChanger} from '../mixins/page-changer'
+    import {teamsApiProcessor} from '../mixins/teams-api-processor'
+
     export default {
         name: "teams-component",
-        data(){
-            return {
-                teams:[]
-            }
+
+        data() {
+            return {}
         },
 
         mounted() {
-            axios.get('/api/v1/teams', {
-                headers: {
-                    Authorization: 'bearer' + localStorage.getItem('token'),
-                    responseType: 'json'
-                }
-            })
-                .then(response => {
-                    this.teams = response.data;
-                }).catch(error => {
-
-            })
+            this.getTeams();
 
         },
+
         mixins: [
-            pageChanger
+            pageChanger,
+            teamsApiProcessor
         ],
     }
 </script>
 
 <style scoped>
-    .adding-button{
+    .adding-button {
         margin: 10px;
     }
 
