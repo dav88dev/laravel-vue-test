@@ -22,6 +22,11 @@ Project installation
 
 change directory, go into new cloned directory
 
+rename env.example to .env and write down preferred configurations
+type:
+
+mv .env.example .env
+
 type commands (one by one) below:
 
 composer install
