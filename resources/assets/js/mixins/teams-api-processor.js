@@ -9,6 +9,7 @@ export const teamsApiProcessor = {
 
     methods: {
         getTeams() {
+            this.callComplete = false;
             axios.get('/api/v1/teams', {
                 headers: {
                     Authorization: 'bearer' + localStorage.getItem('token'),

@@ -8,10 +8,10 @@ export default new Vuex.Store({
         isLoggedIn: !!localStorage.getItem('token')
     },
     mutations: {
-        loginUser (state) {
+        loginUser(state) {
             state.isLoggedIn = true
         },
-        logoutUser (state) {
+        logoutUser(state) {
             state.isLoggedIn = false
         },
     }

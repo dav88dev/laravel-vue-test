@@ -1,36 +1,44 @@
-export const teamsApiProcessor = {
-
-    data() {
-        return {
-            deleted:false
-        }
-    },
+export const deleteApiCalls = {
 
     methods: {
-       deleteTeam(id) {
-            axios.delete('/api/v1/teams' + id, {
+        deleteTeam(id) {
+            axios.delete('/api/v1/teams/' + id, {
                 headers: {
                     Authorization: 'bearer' + localStorage.getItem('token'),
                 }
             })
                 .then(response => {
-                    this.deleted = true;
+                    this.refreshTeamsData();
                 }).catch(error => {
 
             })
         },
 
         deletePlayer(id) {
-            axios.delete('/api/v1/players' + id, {
+            axios.delete('/api/v1/players/' + id, {
                 headers: {
                     Authorization: 'bearer' + localStorage.getItem('token'),
                 }
             })
                 .then(response => {
-                    this.deleted = true;
+                    this.refreshPlayersData();
                 }).catch(error => {
 
             })
+        },
+
+        refreshPlayersData() {
+            if (this.$route.name == "team-players") {
+                this.getData();
+            }
+
+            if (this.$route.name == "players") {
+                this.apiCall();
+            }
+        },
+
+        refreshTeamsData() {
+            this.getTeams()
         }
 
     }

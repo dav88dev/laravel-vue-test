@@ -3,7 +3,6 @@
         <h1 class="display-4">Add player</h1>
         <form @submit.prevent="edit()">
             <select v-model="player.team_id" required class="custom-select custom-select-lg mb-3">
-
                 <option v-for="team in teams" :value="team.id">{{ team.name }}</option>
             </select>
             <div class="input-group">
@@ -33,7 +32,7 @@
                 error: false,
                 success: false,
                 playerCallCompleted: false,
-                test:2
+                test: 2
 
             }
         },

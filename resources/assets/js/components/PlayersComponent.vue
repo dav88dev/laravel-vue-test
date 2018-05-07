@@ -13,6 +13,7 @@
                             <p class="card-text">
                                 <router-link :to="{name:'edit-player', params: { player:player.id }}">Edit</router-link>
                             </p>
+                            <button @click="deletePlayer(player.id)" type="button" class="btn btn-link text-danger">Delete</button>
                         </div>
                     </div>
                 </div>
@@ -48,6 +49,7 @@
 </template>
 <script>
     import {pageChanger} from '../mixins/page-changer'
+    import {deleteApiCalls} from '../mixins/delete'
 
     export default {
         name: "players-component",
@@ -93,7 +95,8 @@
             },
         },
         mixins: [
-            pageChanger
+            pageChanger,
+            deleteApiCalls
         ],
     }
 </script>

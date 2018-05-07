@@ -1,9 +1,7 @@
 export const pageChanger = {
 
     data() {
-        return {
-
-        }
+        return {}
     },
 
     methods: {

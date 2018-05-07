@@ -16,6 +16,7 @@ class TeamController extends Controller
     {
         $this->middleware('jwt.auth');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -100,7 +101,7 @@ class TeamController extends Controller
      */
     public function getPlayers(Team $team)
     {
-        return response()->json(['team'=>$team, 'players'=>$team->players], 200);
+        return response()->json(['team' => $team, 'players' => $team->players], 200);
     }
 
 }
