@@ -22,4 +22,19 @@ class Team extends Model
     {
         return $this->hasMany('App\Player');
     }
+
+
+    /**
+     * Delete related rows
+     *
+     * @return void
+     */
+    protected static function boot() {
+        parent::boot();
+
+        static::deleting(function($team) {
+            $team->players()->delete();
+
+        });
+    }
 }

@@ -5,10 +5,15 @@
         </div>
         <div v-if="callComplete" class="card-deck">
             <div v-for="team in teams" class="card">
-                <img class="card-img-top" src="https://lorempixel.com/300/150/" alt="Card image cap">
-                <div class="card-body">
+                <img class="card-img-top" src="https://lorempixel.com/300/150/" alt="team logo">
+                <div class="card-body text-center">
                     <h5 class="card-title">{{ team.name }}</h5>
-                    <p class="card-text">Click to see players</p>
+                    <p class="card-text">
+                        <router-link :to="{name:'team-players', params: { team:team.id }}">See players</router-link>
+                    </p>
+                    <p class="card-text">
+                        <router-link :to="{name:'edit-team', params: { team:team.id }}">Edit team</router-link>
+                    </p>
                 </div>
             </div>
         </div>
@@ -28,7 +33,6 @@
 
         mounted() {
             this.getTeams();
-
         },
 
         mixins: [

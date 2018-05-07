@@ -6,12 +6,12 @@
                 <option value="" selected disabled>Please select team</option>
                 <option v-for="team in teams" :value="team.id">{{ team.name }}</option>
             </select>
-            <div class="input-group input-group-lg">
+            <div class="input-group">
                 <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-lg">Player name</span>
+                    <span class="input-group-text" id="">First and last name</span>
                 </div>
-                <input v-model="playerName" type="text" required class="form-control" aria-label="Large"
-                       aria-describedby="inputGroup-sizing-sm">
+                <input v-model="firstName" type="text" class="form-control">
+                <input v-model="lastName" type="text" class="form-control">
             </div>
             <button type="submit" class="btn btn-success btn-lg save-button">Save</button>
         </form>
@@ -29,7 +29,8 @@
         data() {
             return {
                 teamID: 0,
-                playerName: '',
+                firstName: '',
+                lastName: '',
                 error: false,
                 success: false,
             }
@@ -45,7 +46,8 @@
                             Authorization: 'Bearer ' + localStorage.getItem('token'),
                         },
                         team_id: this.teamID,
-                        name: this.playerName,
+                        first_name: this.firstName,
+                        last_name: this.lastName,
                     }
                 )
                     .then(response => {

@@ -11,10 +11,6 @@
 |
 */
 
-/*Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});*/
-
 
 Route::group([
     'middleware' => 'api',
@@ -30,7 +26,7 @@ Route::group(['prefix' => 'v1'], function () {
 
     Route::resource('teams', 'TeamController')->except([
         'create',
-        'edit'
+        'edit',
     ]);
 
     Route::resource('players', 'PlayerController')->except([

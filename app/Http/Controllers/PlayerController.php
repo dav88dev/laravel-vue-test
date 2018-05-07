@@ -38,14 +38,16 @@ class PlayerController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'team_id' => 'required|numeric|exists:teams,id',
-            'name' => 'required|max:250'
+            'first_name' => 'required|max:250',
+            'last_name' => 'required|max:250'
         ]);
         if ($validator->fails()) {
             return response()->json($validator->messages(), 422);
         }
         $player = new Player();
         $player->team_id = $request->team_id;
-        $player->name = $request->name;
+        $player->first_name = $request->first_name;
+        $player->last_name = $request->last_name;
         $player->saveOrFail();
         return response()->json('success', 201);
     }
@@ -73,13 +75,15 @@ class PlayerController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'team_id' => 'required|numeric|exists:teams,id',
-            'name' => 'required|max:250'
+            'first_name' => 'required|max:250',
+            'last_name' => 'required|max:250',
         ]);
         if ($validator->fails()) {
             return response()->json($validator->messages(), 422);
         }
         $player->team_id = $request->team_id;
-        $player->name = $request->name;
+        $player->first_name = $request->first_name;
+        $player->last_name = $request->last_name;
         $player->saveOrFail();
         return response()->json('resource updated successfully', 200);
     }

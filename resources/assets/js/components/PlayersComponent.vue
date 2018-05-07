@@ -9,7 +9,10 @@
                     <div v-for="player in players" class="card">
                         <img class="card-img-top" src="https://lorempixel.com/400/200/" alt="Card image cap">
                         <div class="card-body text-center">
-                            <h5 class="card-title">{{ player.name }}</h5>
+                            <h5 class="card-title">{{ player.first_name + ' '+ player.last_name }}</h5>
+                            <p class="card-text">
+                                <router-link :to="{name:'edit-player', params: { player:player.id }}">Edit</router-link>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -45,6 +48,7 @@
 </template>
 <script>
     import {pageChanger} from '../mixins/page-changer'
+
     export default {
         name: "players-component",
         data() {
